@@ -96,3 +96,5 @@ console.log(Tiger.say())
 - file-loaderのinstallとoptionsの記載で画像を配置できる。
 
 # sass-loader
+- sass-loader
+- node-sass ... versionに注意(https://www.npmjs.com/package/node-sass)

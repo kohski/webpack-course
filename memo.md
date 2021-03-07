@@ -150,3 +150,37 @@ console.log(Tiger.say())
 - bundleすると全部一つに => 元のファイルと差分がでる。
 - それを管理しているのがMapfile
 - webpackのdevtoolにある
+
+
+# eslint
+- 以下をinstall
+  - eslint
+  - eslint-loader
+- npx eslint --init
+  - airbnbを選択
+- loaderの設定
+  ```js
+  module.exports = {
+    module: {
+      rules: [
+        {
+          test: /\.jsx?/,
+          exclude: /node_modules/,
+          loader: "eslint-loader",
+          enforce: "pre"  // 他のloaderが動く前に先に動作させることができる
+        }
+      ]
+    }
+  }
+  ```
+- parserの設定
+  ```bash
+  $ npm i babel-eslint@10.0.1
+  ```
+  .eslintrc.json
+  ```js
+  {
+    "extends": "airbnb",
+    "parser": "babel-eslint"
+  }
+  ```

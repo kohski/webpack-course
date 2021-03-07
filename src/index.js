@@ -17,15 +17,12 @@
 // image.src = logo
 // document.body.appendChild(image)
 
-import React from 'react'
-import ReactDOM from 'react-dom'
-import './style.css'
-import './style.scss'
-
-console.log('I am printing logs')
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './style.css';
+import './style.scss';
 
 ReactDOM.render(
   <div>Hello, React!!</div>,
-  document.getElementById('root')
-)
-
+  document.getElementById('root'),
+);

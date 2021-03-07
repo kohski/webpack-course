@@ -47,3 +47,8 @@ module.exports = {
 ```bash
 $ npx webpack --mode development --config webpack.config.js
 ```
+
+# webpack-dev-server
+- npm i --save-dev webpack-dev-server
+- npx webpack-dev-server --openでwatchモードにできる
+- npm startにwebpac-dev-server --openを追加

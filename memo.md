@@ -43,4 +43,7 @@ module.exports = {
   }
 }
 ```
-- 
+- コマンドは以下
+```bash
+$ npx webpack --mode development --config webpack.config.js
+```

@@ -47,3 +47,10 @@ module.exports = {
 ```bash
 $ npx webpack --mode development --config webpack.config.js
 ```
+
+# 開発環境と本番環境の違いについて
+|  mode         |  Dev  | Prod |
+| ----          | ---- | --- |
+|  圧縮          |  無  |  有  |
+|  ビルド時間     |  小  |  大  |
+|  パフォーマンス  | 悪   |  良  |

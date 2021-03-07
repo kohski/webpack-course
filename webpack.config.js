@@ -21,6 +21,19 @@ module.exports = {
         // 'A chain is executed in reverse order. '
         use: ["style-loader", "css-loader"],
       },
+      // {
+      //   test: /\.png|jpe?g|gif|svg|ico|pdf$/i, //jpeg or jpg対応で?を追加。 ケースセンシティブじゃなくていいからiオプションを追加
+      //   use: "url-loader", // optionsを利用しない場合、base64エンコーディングされる
+      // },
+      {
+        test: /\.png|jpe?g|gif|svg|ico|pdf$/i, //jpeg or jpg対応で?を追加。 ケースセンシティブじゃなくていいからiオプションを追加
+        // use: "url-loader", // optionsを利用しない場合、base64エンコーディングされる
+        loader: 'url-loader',
+        options: {
+          limit: 2048, // 1byte単位 => 2048 = 2KBって意味。
+          name: "./images/[name].[ext]",
+        },
+      },
     ],
   },
 };

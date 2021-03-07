@@ -79,5 +79,6 @@ module.exports = {
       }),
       new OptimizeCSSAssetsPlugin({})
     ]
-  }
+  },
+  devtool: 'evel-source-map'
 };

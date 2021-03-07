@@ -1,5 +1,6 @@
 const path = require("path");
-const htmlWebpackPlugin = require('html-webpack-plugin')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 
 const outpuPath = path.resolve(__dirname, "dist");
 console.log({ outpuPath: outpuPath });
@@ -17,17 +18,12 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css$/,
-        // https://webpack.js.org/concepts/loaders/#loader-features
-        // 'A chain is executed in reverse order. '
-        use: ["style-loader", "css-loader"],
-      },
-      {
-        test: /\.scss$/,
+        test: /\.(sc|c)ss$/, // cssまたはscssに適用
         // https://webpack.js.org/concepts/loaders/#loader-features
         // 'A chain is executed in reverse order. '
         use: [
-          "style-loader",
+          MiniCssExtractPlugin.loader, // header>linkでstyleシートを読込み
+          // "style-loader", // head > styleを読込み
           "css-loader",
           "sass-loader", // sassでcssにコンパイル => cssをjsにコンパイル => styleタグに読み込まれる
         ],
@@ -62,9 +58,12 @@ module.exports = {
     ],
   },
   plugins: [
-    new htmlWebpackPlugin({
+    new HtmlWebpackPlugin({
       template: './src/index.html',
       filename: './index.html'
+    }),
+    new MiniCssExtractPlugin({
+      filename: '[name].[hash].css' // cssがcacheされることを回避する。毎回ハッシュがfilenameに挿入されるので。
     })
   ]
 };

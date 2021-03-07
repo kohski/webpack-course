@@ -1,6 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin') // uglifyjs-webpack-pluginはuglify-jsに依存。uglify-jsの設定をみる
 
 const outpuPath = path.resolve(__dirname, "dist");
 console.log({ outpuPath: outpuPath });
@@ -65,5 +66,16 @@ module.exports = {
     new MiniCssExtractPlugin({
       filename: '[name].[hash].css' // cssがcacheされることを回避する。毎回ハッシュがfilenameに挿入されるので。
     })
-  ]
+  ],
+  optimization: { // 最適化 ... webpack4からの機能
+    minimizer: [
+      new UglifyJsPlugin({  // https://github.com/mishoo/UglifyJS ここで確認が可能
+        uglifyOptions: {
+          compress: {
+            drop_console: true
+          }
+        }
+      })
+    ]
+  }
 };

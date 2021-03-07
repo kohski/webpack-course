@@ -90,3 +90,9 @@ console.log(Tiger.say())
   - ["css-loader", "style-loader"]だとだめ。
   - ["style-loader", "css-loader"]ならOK
   - https://webpack.js.org/concepts/loaders/#loader-features => "A chain is executed in reverse order. "
+
+# url-loader, file-loader
+- url-loaderのみだとbase64
+- file-loaderのinstallとoptionsの記載で画像を配置できる。
+
+# sass-loader

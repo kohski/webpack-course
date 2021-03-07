@@ -21,6 +21,16 @@ module.exports = {
         // 'A chain is executed in reverse order. '
         use: ["style-loader", "css-loader"],
       },
+      {
+        test: /\.scss$/,
+        // https://webpack.js.org/concepts/loaders/#loader-features
+        // 'A chain is executed in reverse order. '
+        use: [
+          "style-loader",
+          "css-loader",
+          "sass-loader" // sassでcssにコンパイル => cssをjsにコンパイル => styleタグに読み込まれる
+        ],
+      },
       // {
       //   test: /\.png|jpe?g|gif|svg|ico|pdf$/i, //jpeg or jpg対応で?を追加。 ケースセンシティブじゃなくていいからiオプションを追加
       //   use: "url-loader", // optionsを利用しない場合、base64エンコーディングされる
@@ -34,6 +44,7 @@ module.exports = {
           name: "./images/[name].[ext]",
         },
       },
+
     ],
   },
 };

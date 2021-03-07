@@ -2,6 +2,7 @@ const path = require("path");
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin') // uglifyjs-webpack-pluginはuglify-jsに依存。uglify-jsの設定をみる
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 
 const outpuPath = path.resolve(__dirname, "dist");
 console.log({ outpuPath: outpuPath });
@@ -75,7 +76,8 @@ module.exports = {
             drop_console: true
           }
         }
-      })
+      }),
+      new OptimizeCSSAssetsPlugin({})
     ]
   }
 };

@@ -13,6 +13,7 @@ $ npm i --save-dev live-server@1.2.1 webpack@4.29.0 webpack-cli@3.2.1
     $ ./node_modules/.bin/live-server
     ```
   npm 5.2.0以降の機能
+- git diff --cachedでgit addした差分をみることができる
 
 # まずはcdnでscriptタグでinstall
 
@@ -59,3 +60,33 @@ $ npx webpack --mode development --config webpack.config.js
 - npm i --save-dev webpack-dev-server
 - npx webpack-dev-server --openでwatchモードにできる
 - npm startにwebpac-dev-server --openを追加
+
+# moduleのimport/exportいろいろ
+```js
+import { NAME, power } from './utilities'// jsファイルは拡張子を省略可能, 定数も可能
+console.log(power(11))
+console.log(NAME)
+
+import * as utilities from './utilities'; // *で全部importが可能
+console.log(utilities.power(11))
+console.log(utilities.NAME)
+
+import { NAME as NAME_OF_KIM, power } from './utilities'// {}内でもasが可能 => 名前衝突の回避
+console.log(power(11))
+console.log(NAME_OF_KIM)
+
+import Linon from './utilities' // default export
+console.log(Linon.say())
+
+import Tiger from './utilities' // default exportは別名で問題ない
+console.log(Tiger.say())
+```
+
+
+# style-loader, css-loaderの設定
+- ./src/style.cssを追加
+- configにmodule.rulesを追加
+- useは逆から順番に適用されるので注意。
+  - ["css-loader", "style-loader"]だとだめ。
+  - ["style-loader", "css-loader"]ならOK
+  - https://webpack.js.org/concepts/loaders/#loader-features => "A chain is executed in reverse order. "

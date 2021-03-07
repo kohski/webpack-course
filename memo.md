@@ -82,7 +82,6 @@ import Tiger from './utilities' // default exportは別名で問題ない
 console.log(Tiger.say())
 ```
 
-
 # style-loader, css-loaderの設定
 - ./src/style.cssを追加
 - configにmodule.rulesを追加
@@ -98,3 +97,47 @@ console.log(Tiger.say())
 # sass-loader
 - sass-loader
 - node-sass ... versionに注意(https://www.npmjs.com/package/node-sass)
+
+# babel
+- https://babeljs.io/setup#installation
+- webpackを選択
+- 以下をinstall
+  - babel-loader
+  - @babel/core
+  - @babel/preset-env
+  - @babel/preset-react ... jsxのtranspileに必要
+- babel.config.jsonを作成して以下を追加
+  ```json
+  {
+    "presets": [
+      "@babel/preset-env",
+      "@babel/preset-react"
+    ]
+  }
+  ```
+- react, react-domをinstall
+  - src/index.js
+    ```js
+    import React from 'react'
+    import ReactDOM from 'react-dom'
+
+    ReactDOM.render(
+      <div>Hello, React</div>,
+      document.getElementById('root')
+    )
+    ```
+- html-loader, html-webpack-plugin
+  - html-loaderを設定
+  - html-webpack-pluginを作成
+    - webpack.config.js
+      ```js
+      const htmlWebpackPlugin = require('html-webpack-plugin')
+      module.exports = {
+        plugins: [
+          new htmlWebpackPlugin({
+            template: './src/index.html',
+            filename: './index.html'
+          })
+        ]
+      }
+      ```
